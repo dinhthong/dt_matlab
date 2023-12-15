@@ -1,17 +1,19 @@
 %% Program to calculate the end money you will get if you deposit money to the bank monthly
 % Assume that year nenshuu doesn't increase
-% Doesn't care about bonunses
+% Doesn't care about bonuses
 
 clear all;
 
-
+% User Input Variables
 daily_overtime_inhour = 1.5;
 yearly_salary = 222*10000; %% [Japanese yen]
 
-
 c_rate_yentovnd = 175;
 work_days = 240 % employment contract
+
+
 rate_hourly = yearly_salary/(work_days*8);
+
 % normal minute rate 
 bunkyuu = rate_hourly/60;
 bunkyuu_vnd = bunkyuu*c_rate_yentovnd;
@@ -38,16 +40,16 @@ other_expense = 90000; %% foods
 utilities_fee_monthly = 6500; %% kou.netsu.hi
 gas_fee_monthly = 6000;
 
-saving_salary_per_month = actual_monthly_salary-housing_rent-other_expense-tax;
-saving_salary_per_month = saving_salary_per_month - utilities_fee_monthly - gas_fee_monthly;
+saving_amount_per_month_yen = actual_monthly_salary-housing_rent-other_expense-tax;
+saving_amount_per_month_yen = saving_amount_per_month_yen - utilities_fee_monthly - gas_fee_monthly;
 
 yearly_interest_rate = 8/100;
 % number of year working
-year_to_save = 5;
+year_to_save = 15;
 end_month = year_to_save*12-1;
 final_sum = 0;
 for i = 0:end_month
-    current_interest = saving_salary_per_month*(1+yearly_interest_rate)^(i/12)
+    current_interest = saving_amount_per_month_yen*(1+yearly_interest_rate)^(i/12)
     final_sum = final_sum+current_interest
 end
 % nenkin can be received after you completing all the procedure to leave
